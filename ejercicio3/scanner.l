@@ -28,13 +28,11 @@
 "&"                   { return AND; }
 "|"                   { return OR; }
 
-/* Reconoce numeros hexadecimales */
 0[xX][0-9a-fA-F]+     {
                           yylval.val = (int)strtol(yytext, NULL, 0);
                           return NUMBER;
                       }
 
-/* Reconoce numeros decimales */
 [0-9]+                {
                           yylval.val = (int)strtol(yytext, NULL, 10);
                           return NUMBER;
@@ -45,10 +43,7 @@
 [ \t]+                { /* Ignora espacios y tabulaciones */ }
 
 .                     {
-                          printf(
-                              "Caracter no reconocido: %c\n",
-                              *yytext
-                          );
+                          printf("Caracter no reconocido: %c\n", *yytext);
                       }
 
 %%
